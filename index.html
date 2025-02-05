@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .EightBall {
+        .eightBall {
             height: 300px;
             width: 300px;
+            cursor: pointer;
+            border: 2px, solid, lightblue;
+            margin: 50px;
         }
     </style>
 </head>
@@ -31,7 +34,7 @@
         show();
         function show() {
             const html = /*HTML*/`
-            <img src="pic/Magic8ball.jpg" alt="" onclick="generateRandomEightBallAnswer()">
+            <img class="eightBall" src="pic/Magic8ball.jpg" alt="" onclick="generateRandomEightBallAnswer()">
             <div id="randomAnswer"></div>
             `;
             app.innerHTML = html;
