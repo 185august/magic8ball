@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .EightBall {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+
+
+    <script>
+
+        const app = document.getElementById('app')
+        let randomNumber;
+        let currentAnswer;
+        const eightBallAnswers = ['Jaaa', 'Prøv igjen senere',
+            'Nei', 'Usikker', 'Spør Torjus', 'Mattias sier: NEI',
+            'Positiv til det', 'Visst pokker', 'Det ser lyst ut', 'Jo',
+            'Sannsynligvis', 'Felix tviler på det'];
+
+        show();
+        function show() {
+            const html = /*HTML*/`
+            <img src="pic/Magic8ball.jpg" alt="" onclick="generateRandomEightBallAnswer()">
+            <div id="randomAnswer"></div>
+            `;
+            app.innerHTML = html;
+        }
+        function generateRandomEightBallAnswer() {
+            randomNumber = Math.floor(Math.random() * 11);
+            currentAnswer = eightBallAnswers[randomNumber];
+            let randomAnswer = document.getElementById('randomAnswer');
+            if (currentAnswer === randomAnswer.innerHTML) {
+                generateRandomEightBallAnswer();
+            } else {
+                randomAnswer.innerHTML = currentAnswer;
+                console.log(currentAnswer)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
