@@ -22,32 +22,33 @@
 
 
     <script>
-
+        //Model
         const app = document.getElementById('app')
         let randomNumber;
-        let currentAnswer;
+        let currentRandomEigthBallAnswer;
+        let currentAnswerHTML = '';
         const eightBallAnswers = ['Jaaa', 'Prøv igjen senere',
             'Nei', 'Usikker', 'Spør Torjus', 'Mattias sier: NEI',
             'Positiv til det', 'Visst pokker', 'Det ser lyst ut', 'Jo',
             'Sannsynligvis', 'Felix tviler på det'];
-
+        //View
         show();
         function show() {
             const html = /*HTML*/`
             <img class="eightBall" src="pic/Magic8ball.jpg" alt="" onclick="generateRandomEightBallAnswer()">
-            <div id="randomAnswer"></div>
+            <div id="randomAnswer"> ${currentAnswerHTML}</div>
             `;
             app.innerHTML = html;
         }
+        //Controller 
         function generateRandomEightBallAnswer() {
-            randomNumber = Math.floor(Math.random() * 11);
-            currentAnswer = eightBallAnswers[randomNumber];
-            let randomAnswer = document.getElementById('randomAnswer');
-            if (currentAnswer === randomAnswer.innerHTML) {
+            randomNumber = Math.floor(Math.random() * eightBallAnswers.length);
+            currentRandomEigthBallAnswer = eightBallAnswers[randomNumber];
+            if (currentRandomEigthBallAnswer === currentAnswerHTML) {
                 generateRandomEightBallAnswer();
             } else {
-                randomAnswer.innerHTML = currentAnswer;
-                console.log(currentAnswer)
+                currentAnswerHTML = currentRandomEigthBallAnswer;
+                show();
             }
         }
 
